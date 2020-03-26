@@ -13,7 +13,7 @@ yarn add next react react-dom
 }
 ```
 
-## Set Up Necessary Directries and Files
+## Setup Necessary Directries and Files
 - `components`... For components. Great to group up files in here.
 - `lib`... For modules and queries you created.
 - `pages`... For page components, which consist of actual web pages.
@@ -28,3 +28,57 @@ function HomePage() {
 
 export default HomePage
 ```
+
+## Setup Tsconfig Page
+### Install Dependencies
+```
+yarn add -D typescript
+yarn add -D @types/react @types/react-dom @types/node
+```
+
+### Edit `tsconfig.json`
+- The following is the example from the official doc
+```
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "es2018"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}
+```
+
+- Editted like the followings:
+```
+"compilerOptions": {
+  "lib": ["dom", "es2018"],
+  ...
+  "sourceMap": true,
+  ...
+  "forceConsistentCasingInFileNames": true, 
+  "noImplicitReturns": true, 
+  "noImplicitThis": true,
+  "noImplicitAny": true, 
+  "strictNullChecks": true, 
+  "suppressImplicitAnyIndexErrors": true, 
+}
+...
+"exclude": ["node_modules", "jest"],
+```
+
