@@ -103,6 +103,11 @@ yarn add -D tslint lint-staged husky
 ```
 - `package.json`
 ```
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
 "lint-staged": {
   "*.{ts,tsx}": [
     "tslint --fix",
