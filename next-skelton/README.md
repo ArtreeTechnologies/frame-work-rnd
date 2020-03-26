@@ -81,3 +81,40 @@ yarn add -D @types/react @types/react-dom @types/node
 "exclude": ["node_modules", "jest"],
 ```
 
+## Module Install
+- `prettier`
+- `prettier-stylelint`
+- `tslint`
+- `tslint-config-airbnb`
+- `tslint-config-prettier`
+- `tstlint-plugin-prettier`
+- `stylelint`
+- `stylelint-config-idiomatic-order`
+- `stylelint-config-prettier`
+- `postcss`
+- `postcss-syntax`
+- `lint-staged`... Runs tslint, etc. on staged files
+- `husky`... Handles git pre-commit hooks
+
+### `lint-staged`, `husky`
+- Command:
+```
+yarn add -D tslint lint-staged husky
+```
+- `package.json`
+```
+"lint-staged": {
+  "*.{ts,tsx}": [
+    "tslint --fix",
+    "git add"
+  ],
+  "*.js": [
+    "prettier --write",
+    "git add"
+  ],
+  "*.css": [
+    "prettier-stylelint --write",
+    "git add"
+  ]
+}
+```
