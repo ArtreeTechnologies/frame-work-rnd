@@ -71,7 +71,6 @@ yarn add -D @types/react @types/react-dom @types/node
   ...
   "sourceMap": true,
   ...
-  "forceConsistentCasingInFileNames": true, 
   "noImplicitReturns": true, 
   "noImplicitThis": true,
   "noImplicitAny": true, 
