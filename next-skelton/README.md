@@ -82,12 +82,13 @@ yarn add -D @types/react @types/react-dom @types/node
 ```
 
 ## Module Install
+Reference(https://github.com/oukayuka/ReactBeginnersBook/tree/master/06-lint/03-mysetting)
 - `prettier`
 - `prettier-stylelint`
-- `tslint`
-- `tslint-config-airbnb`
-- `tslint-config-prettier`
-- `tstlint-plugin-prettier`
+- `tslint`... Core tslint module
+- `tslint-config-airbnb`... One of tslint defact standards
+- `tslint-config-prettier`... Match tslint and prettier
+- `tslint-plugin-prettier`... Match tslint and prettier
 - `stylelint`
 - `stylelint-config-idiomatic-order`
 - `stylelint-config-prettier`
@@ -97,6 +98,7 @@ yarn add -D @types/react @types/react-dom @types/node
 - `husky`... Handles git pre-commit hooks
 
 ### `lint-staged`, `husky`
+Reference(https://kic-yuuki.hatenablog.com/entry/2019/05/27/090515)
 - Command:
 ```
 yarn add -D tslint lint-staged husky
@@ -110,16 +112,66 @@ yarn add -D tslint lint-staged husky
 },
 "lint-staged": {
   "*.{ts,tsx}": [
-    "tslint --fix",
-    "git add"
+    "tslint --fix"
   ],
   "*.js": [
-    "prettier --write",
-    "git add"
+    "prettier --write"
   ],
   "*.css": [
-    "prettier-stylelint --write",
-    "git add"
+    "prettier-stylelint --write"
   ]
 }
 ```
+
+### `tslint`, `tslint-config-airbnb
+* Reference(https://dev.to/oahehc/how-to-config-react-project-with-next-js-typescript-tslint-and-jest-11l0)
+- Command:
+```
+yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
+```
+- `tslint.json`
+```
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-eslint-rules"
+  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "import-name": false,
+    "align": [true, "parameters", "arguments", "statements"],
+    "function-name": [
+      true,
+      {
+        "function-regex": "^[a-zA-Z$][\\w\\d]+$",
+        "method-regex": "^[a-z$][\\w\\d]+$",
+        "private-method-regex": "^[a-z$][\\w\\d]+$",
+        "protected-method-regex": "^[a-z$][\\w\\d]+$",
+        "static-method-regex": "^[a-z$][\\w\\d]+$"
+      }
+    ],
+    "max-line-length": [
+      true,
+      {
+        "limit": 100,
+        "ignore-pattern": "^import |^export {(.*?)}"
+      }
+    ],
+    "variable-name": {
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    }
+  }
+}
+```
+- `package.json`
+```
+{"scripts": {
+  ...
+  "lint": "tslint --project ./ --fix '{components,lib,pages}/**/*.{ts,tsx}'",
+  "tslint-check": "tslint-config-prettier-check ./tslint.json"
+}}
+```
+`tslint-config-prettier-check` checks conflict rules between prettier and tslint
+
