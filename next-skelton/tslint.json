@@ -26,6 +26,17 @@
         "ignore-pattern": "^import |^export {(.*?)}"
       }
     ],
+    "prettier": [
+      true,
+      {
+        "bracketSpacing": true,
+        "printWidth": 80,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ],
     "variable-name": {
       "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
     }

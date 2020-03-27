@@ -87,8 +87,8 @@ Reference(https://github.com/oukayuka/ReactBeginnersBook/tree/master/06-lint/03-
 - `prettier-stylelint`
 - `tslint`... Core tslint module
 - `tslint-config-airbnb`... One of tslint defact standards
-- `tslint-config-prettier`... Match tslint and prettier
-- `tslint-plugin-prettier`... Match tslint and prettier
+- `tslint-config-prettier`... Detects conflict between prettier and tslint
+- `tslint-plugin-prettier`... Combine prettier check with tslint running
 - `stylelint`
 - `stylelint-config-idiomatic-order`
 - `stylelint-config-prettier`
@@ -159,6 +159,17 @@ yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
         "ignore-pattern": "^import |^export {(.*?)}"
       }
     ],
+    "prettier": [
+      true,
+      {
+        "bracketSpacing": true,
+        "printWidth": 80,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ],
     "variable-name": {
       "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
     }
@@ -167,11 +178,51 @@ yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
 ```
 - `package.json`
 ```
-{"scripts": {
+{
+  "scripts": {
   ...
   "lint": "tslint --project ./ --fix '{components,lib,pages}/**/*.{ts,tsx}'",
   "tslint-check": "tslint-config-prettier-check ./tslint.json"
-}}
+  }
+}
 ```
 `tslint-config-prettier-check` checks conflict rules between prettier and tslint
+
+### `prettier`
+Reference(https://qiita.com/akisx/items/4b90106c7faca4965852)
+- Command:
+```
+yarn add -D prettier
+```
+- `package.json`
+```
+{
+  "scripts": {
+    "prettier": {
+      "bracketSpacing": true,
+      "printWidth": 80,
+      "semi": true,
+      "singleQuote": true,
+      "trailingComma": "all",
+      "useTabs": false
+    }
+  } 
+}
+```
+- `./.vscode/settings.json` 
+On save, prettier automatically formats code
+```
+{
+  "editor.formatOnSave": true
+}
+```
+- (Additional) Along with tslint
+  - `tslint-config-prettier` detects conflicts
+  - `tslint-plugin-prettier` runs prettier along with tslint
+
+## Setup Test Environment
+### `jest`
+```
+yarn add -D jest enzyme enzyme-adapter-react-16 babel-jest @types/jest @types/enzyme
+```
 
