@@ -314,3 +314,39 @@ describe('index page', () => {
 ```
 yarn test
 ```
+
+## Setup Nice-to-have Environtment
+### Path Name Alias
+1. Command:
+```
+yarn add -D babel-plugin-module-resolver
+```
+2. `.babelrc`
+```
+{
+  "presets": [["next/babel"]],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@components": "./components",
+          "~/lib": "./lib"
+        }
+      }
+    ]
+  ]
+}
+```
+3. `tsconfig.json`
+```
+"compilerOptions": {
+  ...
+  "baseUrl": "./",
+  "paths": {
+    "@components/*": ["./components/*"],
+    "~/lib/*": ["./lib/*"]
+  }
+},
+```
