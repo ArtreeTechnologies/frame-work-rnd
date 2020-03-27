@@ -98,12 +98,12 @@ Reference(https://github.com/oukayuka/ReactBeginnersBook/tree/master/06-lint/03-
 - `husky`... Handles git pre-commit hooks
 
 ### `lint-staged`, `husky`
-Reference(https://kic-yuuki.hatenablog.com/entry/2019/05/27/090515)
-- Command:
+* Reference(https://kic-yuuki.hatenablog.com/entry/2019/05/27/090515)
+1. Command:
 ```
 yarn add -D tslint lint-staged husky
 ```
-- `package.json`
+2. `package.json`
 ```
 "husky": {
   "hooks": {
@@ -125,11 +125,11 @@ yarn add -D tslint lint-staged husky
 
 ### `tslint`, `tslint-config-airbnb
 * Reference(https://dev.to/oahehc/how-to-config-react-project-with-next-js-typescript-tslint-and-jest-11l0)
-- Command:
+1. Command:
 ```
 yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
 ```
-- `tslint.json`
+2. `tslint.json`
 ```
 {
   "extends": [
@@ -176,7 +176,7 @@ yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
   }
 }
 ```
-- `package.json`
+3. `package.json`
 ```
 {
   "scripts": {
@@ -189,12 +189,12 @@ yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
 `tslint-config-prettier-check` checks conflict rules between prettier and tslint
 
 ### `prettier`
-Reference(https://qiita.com/akisx/items/4b90106c7faca4965852)
-- Command:
+* Reference(https://qiita.com/akisx/items/4b90106c7faca4965852)
+1. Command:
 ```
 yarn add -D prettier
 ```
-- `package.json`
+2. `package.json`
 ```
 {
   "scripts": {
@@ -209,7 +209,7 @@ yarn add -D prettier
   } 
 }
 ```
-- `./.vscode/settings.json` 
+3. `./.vscode/settings.json` 
 On save, prettier automatically formats code
 ```
 {
@@ -221,8 +221,56 @@ On save, prettier automatically formats code
   - `tslint-plugin-prettier` runs prettier along with tslint
 
 ## Setup Test Environment
-### `jest`
+### `jest`, `Enzyme`
+1. Command:
 ```
 yarn add -D jest enzyme enzyme-adapter-react-16 babel-jest @types/jest @types/enzyme
 ```
+2. `./config/setup.js`
+```
+const enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
 
+enzyme.configure({ adapter: new Adapter() });
+```
+3. `./jest.config.js`
+```
+module.exports = {
+  roots: ['<rootDir>'],
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
+  setupFiles: ['<rootDir>/config/setup.js'],
+  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  testEnvironment: 'jsdom',
+  testURL: 'http://localhost',
+  transform: {
+    '^.+\\.(ts|tsx)$': 'babel-jest',
+  },
+  testRegex: '/__test__/.*\\.(test|spec)\\.tsx?$',
+};
+```
+4. Example: `./__test__/index.test.tsx`
+```
+import React from 'react';
+import { mount } from 'enzyme';
+import Index from '../index';
+
+describe('index page', () => {
+  it('should have App component', () => {
+    const subject = mount(<Index />);
+
+    expect(subject.find('App')).toHaveLength(1);
+  });
+});
+```
+5. `package.json`
+```
+"scripts": {
+  ...
+  "test": "jest --watchAll --verbose"
+}
+```
+6. Yarn command:
+```
+yarn test
+```

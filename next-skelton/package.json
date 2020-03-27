@@ -26,8 +26,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "tslint --project ./ --fix '{components,lib,pages}/**/*.{ts,tsx}'",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "lint": "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "test": "jest --watchAll --verbose"
   },
   "author": "Artree-Technology",
   "license": "ISC",
@@ -43,7 +44,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "tslint --fix"
+      "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'"
     ],
     "*.js": [
       "prettier --write"

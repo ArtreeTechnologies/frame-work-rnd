@@ -26,6 +26,7 @@
         "ignore-pattern": "^import |^export {(.*?)}"
       }
     ],
+    "no-implicit-dependencies": [true, "dev"],
     "prettier": [
       true,
       {
