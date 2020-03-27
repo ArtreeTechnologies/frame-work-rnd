@@ -159,6 +159,7 @@ yarn add -D tslint-config-airbnb tslint-config-prettier tslint-plugin-prettier
         "ignore-pattern": "^import |^export {(.*?)}"
       }
     ],
+    "no-implicit-dependencies": [true, "dev"],
     "prettier": [
       true,
       {

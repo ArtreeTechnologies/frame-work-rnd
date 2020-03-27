@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'"
+      "tslint --fix"
     ],
     "*.js": [
       "prettier --write"
