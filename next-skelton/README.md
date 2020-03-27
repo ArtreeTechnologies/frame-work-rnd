@@ -1,4 +1,43 @@
-# Getting Started Next
+# Next Usage Docs
+1. Clone project from remote.
+```
+git clone <repository>
+```
+
+2. Install modules.
+```
+yarn install
+```
+
+3. Start project on development mode.
+```
+yarn dev
+```
+
+4. Commit project
+```
+git add .
+git commit -m "some message"
+```
+When running commit, it also runs git pre-commit hook.
+
+5. Lint code
+```
+yarn lint
+```
+
+6. Detect the difference between prittier and tslint
+```
+yarn tslint-check
+```
+
+7. Test project
+```
+yarn test
+```
+
+
+# Getting Started Next Project
 ## Install Necessary Modules
 ```
 yarn add next react react-dom
