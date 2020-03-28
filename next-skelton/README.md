@@ -21,14 +21,14 @@ git commit -m "some message"
 ```
 When running commit, it also runs git pre-commit hook.
 
-5. Lint code
+5. Lint code (for tslint and stylelint check)
 ```
 yarn lint
 ```
 
-6. Detect the difference between prittier and tslint
+6. Detect difference between prittier, and tslint and stylelint
 ```
-yarn tslint-check
+yarn lint-check
 ```
 
 7. Test project
@@ -301,10 +301,6 @@ yarn add -D stylelint stylelint-config-idiomatic-order stylelint-config-prettier
   "lint-check:stylelint": "stylelint-config-prettier-check",
 }
 ```
-
-
-
-
 
 ## Setup Test Environment
 ### `jest`, `Enzyme`
