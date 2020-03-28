@@ -122,15 +122,15 @@ yarn add -D @types/react @types/react-dom @types/node
 
 ## Module Install
 Reference(https://github.com/oukayuka/ReactBeginnersBook/tree/master/06-lint/03-mysetting)
-- `prettier`
-- `prettier-stylelint`
+- `prettier`... Core prettier module
 - `tslint`... Core tslint module
 - `tslint-config-airbnb`... One of tslint defact standards
 - `tslint-config-prettier`... Detects conflict between prettier and tslint
 - `tslint-plugin-prettier`... Combine prettier check with tslint running
-- `stylelint`
-- `stylelint-config-idiomatic-order`
-- `stylelint-config-prettier`
+- `stylelint`... Core stylelint module
+- `stylelint-config-idiomatic-order`... Config for the order of stylesheet
+- `stylelint-config-prettier`... Turn off unneccessary prettier config and detects conflict
+- `stylelint-prettier`... Derive prettier config and override from prettier
 - `postcss`
 - `postcss-syntax`
 - `lint-staged`... Runs tslint, etc. on staged files
@@ -157,7 +157,7 @@ yarn add -D tslint lint-staged husky
     "prettier --write"
   ],
   "*.css": [
-    "prettier-stylelint --write"
+    "stylelint --fix"
   ]
 }
 ```
@@ -259,6 +259,52 @@ On save, prettier automatically formats code
 - (Additional) Along with tslint
   - `tslint-config-prettier` detects conflicts
   - `tslint-plugin-prettier` runs prettier along with tslint
+
+### `stylelint`
+1. Command:
+* Reference(
+  https://github.com/prettier/stylelint-config-prettier
+  )
+```
+yarn add -D stylelint stylelint-config-idiomatic-order stylelint-config-prettier stylelint-prettier
+```
+2. `package.json` for stylelint config
+```
+"stylelint": {
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "extends": [
+    "stylelint-config-idiomatic-order",
+    "stylelint-config-prettier",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "singleQuote": true,
+        "indentation": 2
+      }
+    ]
+  }
+}
+```
+3. `package.json` for scrips
+```
+"scripts": {
+  "lint": "yarn lint:tslint; yarn lint:stylelint",
+  "lint:tslint": "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'",
+  "lint:stylelint": "stylelint '{components,lib,pages,__test__}/**/*.css' --fix",
+  "lint-check": "yarn lint-check:tslint; yarn lint-check:stylelint",
+  "lint-check:tslint": "tslint-config-prettier-check ./tslint.json",
+  "lint-check:stylelint": "stylelint-config-prettier-check",
+}
+```
+
+
+
+
 
 ## Setup Test Environment
 ### `jest`, `Enzyme`

@@ -17,7 +17,7 @@
     "jest": "^25.2.3",
     "lint-staged": "^10.0.9",
     "prettier": "^2.0.2",
-    "stylelint": "11.1.1",
+    "stylelint": "13.2.1",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-prettier": "^1.1.2",
@@ -31,10 +31,12 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'",
-    "stylelint": "stylelint '{components,lib,pages,__test__}/**/*.css' --fix",
-    "prettier-stylelint": "prettier-stylelint '{components,lib,pages,__test__}/**/*.css' --write",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "lint": "yarn lint:tslint; yarn lint:stylelint",
+    "lint:tslint": "tslint --project ./ --fix '{components,lib,pages,__test__}/**/*.{ts,tsx}'",
+    "lint:stylelint": "stylelint '{components,lib,pages,__test__}/**/*.css' --fix",
+    "lint-check": "yarn lint-check:tslint; yarn lint-check:stylelint",
+    "lint-check:tslint": "tslint-config-prettier-check ./tslint.json",
+    "lint-check:stylelint": "stylelint-config-prettier-check",
     "test": "jest --watchAll --verbose"
   },
   "author": "Artree-Technology",
@@ -69,14 +71,22 @@
     "useTabs": false
   },
   "stylelint": {
-    "plugins": ["stylelint-prettier"],
+    "plugins": [
+      "stylelint-prettier"
+    ],
     "extends": [
       "stylelint-config-idiomatic-order",
       "stylelint-config-prettier",
       "stylelint-prettier/recommended"
     ],
     "rules": {
-      "prettier/prettier": [true, {"singleQuote": true, "indentation": 2}]
+      "prettier/prettier": [
+        true,
+        {
+          "singleQuote": true,
+          "indentation": 2
+        }
+      ]
     }
   }
 }
