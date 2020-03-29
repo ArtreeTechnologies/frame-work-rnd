@@ -454,8 +454,15 @@ const theme = createMuiTheme({
 
 ## `Redux` Settings
 ### Install Modules
+1. Modules
 - `redux`... For managing application state
 - `react-redux`... Make React bindings for Redux
 - `next-redux-wrapper`... wWrapper Redux for Next.js
 - `redux-devtools-extension`... For debugging application’s state changes.(https://github.com/zalmoxisus/redux-devtools-extension — download extension for your browser)
 - `redux-thunk`... Middleware allows you to write action creators that return a function instead of an action.
+
+2. Command:
+```
+yarn add redux react-redux next-redux-wrapper redux-devtools-extension redux-thunk
+yarn add -D @types/react-redux @types/next-redux-wrapper
+```
