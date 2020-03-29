@@ -264,6 +264,8 @@ On save, prettier automatically formats code
 1. Command:
 * Reference(
   https://github.com/prettier/stylelint-config-prettier
+  https://wemo.tech/3307
+  https://github.com/prettier/stylelint-prettier
   )
 ```
 yarn add -D stylelint stylelint-config-idiomatic-order stylelint-config-prettier stylelint-prettier
@@ -392,3 +394,21 @@ yarn add -D babel-plugin-module-resolver
   }
 },
 ```
+
+## `Material UI Settings`
+### Instal Material UI
+1. Command:
+```
+yarn add @material-ui/core @material-ui/icons
+```
+2. `Styeled Components` VS `Styled JSX`
+```
+yarn add styled-jsx
+yarn add -D @types/styled-jsx
+```
+3. `/pages/_document.tsx`
+* Reference(
+  - https://github.com/zeit/next.js/blob/canary/examples/with-styled-components/pages/_document.js
+  - https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa
+  
+)

@@ -18,7 +18,8 @@
         "static-method-regex": "^[a-z$][\\w\\d]+$"
       }
     ],
-    "no-implicit-dependencies": [true, "dev"],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
     "prettier": [
       true,
       {
