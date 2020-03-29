@@ -16,7 +16,6 @@ const Header = (): JSX.Element => {
         <IconButton
           edge="start"
           className={classes.menuButton}
-          color="inherit"
           aria-label="menu"
         >
           <MenuIcon />
@@ -24,7 +23,7 @@ const Header = (): JSX.Element => {
         <Typography variant="h6" className={classes.title}>
           Signup
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button color="default">Login</Button>
       </Toolbar>
     </AppBar>
   );
@@ -36,6 +35,7 @@ const styles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: 'white',
   },
   title: {
     flexGrow: 1,

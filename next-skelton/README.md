@@ -402,13 +402,52 @@ yarn add -D babel-plugin-module-resolver
 yarn add @material-ui/core @material-ui/icons
 ```
 2. `Styeled Components` VS `Styled JSX`
+* Reference(
+  - https://github.com/styled-components/styled-components
+)
 ```
-yarn add styled-jsx
-yarn add -D @types/styled-jsx
+yarn add styled-components
+yarn add -D @types/styled-components
 ```
 3. `/pages/_document.tsx`
 * Reference(
   - https://github.com/zeit/next.js/blob/canary/examples/with-styled-components/pages/_document.js
   - https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa
-  
 )
+* Points
+  - Call `getInitialProps`. In here, return initialProps and styles from `ServerStyleSheet(s)`
+  - `ServerStyleSheet(s)` is derived from both of `material-ui` and `styled-components`
+  - Render `<HEAD />` with `<meta />` tags for charset, description and so on.
+  - Include `<Main />` and `<NextScript />` tags in `<body />`
+
+4. `/src/lib/page-context.ts` for the definition of the style theme
+```
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: grey[900],
+      dark: grey[600],
+      light: grey[50],
+    },
+    secondary: {
+      main: grey[500],
+    },
+    text: {
+      primary: '#fafafa',
+      secondary: '#757575',
+    },
+  },
+});
+
+```
+
+5. `/page/_app.tsx`
+* Reference(
+  - https://qiita.com/Ouvill/items/c6761c32d31ffb11e114
+  - https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa
+)
+* Points
+  - Embed `ThemeProvider` which is derived from `material-ui` and `styled-components`
+  - Inject both `ThemeProvider` to wrap descendant Components
+  - Theme is imported from `page-content.ts` file to be set in `ThemeProvider`
+  - When component mounted, `#jss-server-side` should be removed from `document`

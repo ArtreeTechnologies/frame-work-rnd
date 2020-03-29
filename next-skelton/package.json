@@ -34,7 +34,7 @@
     "start": "next start",
     "lint": "yarn lint:tslint; yarn lint:stylelint",
     "lint:tslint": "tslint --project ./ --fix '{src,pages,__test__}/**/*.{ts,tsx}'",
-    "lint:stylelint": "stylelint '{src,pages}/**/*.css' --fix",
+    "lint:stylelint": "stylelint '{src,pages}/**/*.{css,tsx}' --fix",
     "lint-check": "yarn lint-check:tslint; yarn lint-check:stylelint",
     "lint-check:tslint": "tslint-config-prettier-check ./tslint.json",
     "lint-check:stylelint": "stylelint-config-prettier-check",
