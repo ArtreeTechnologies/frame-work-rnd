@@ -466,3 +466,19 @@ const theme = createMuiTheme({
 yarn add redux react-redux next-redux-wrapper redux-devtools-extension redux-thunk
 yarn add -D @types/react-redux @types/next-redux-wrapper
 ```
+3. Directries
+- `/store/state/*`... Defines interface(struct) of stored state
+- `/store/actions/*`... Defines actions, includeing fetch data from outside
+- `/store/actions/types.ts`... Defines ActionTypes and possible Action Type
+- `/store/reducers/*`... Defines reducers that chage data fecthed from actions
+- `/store/index.ts`... Combines reducers and creates stateStore
+
+4. `/pages/_app.ts`
+* Points:
+  - Use `next-redux-wrapper` to wrap next with redux functionalities
+  - Necessary types for store are provied from `next-redux-wrapper`
+  - Get and retuern previous `pageProps` in `getInitialProps`
+5. In each page:
+  - Set `mapStateToProps` and `mapStateToDispatch` to call actions and get states
+  - Connect `mapStateToProps` and `mapStateToDispatch`, and Component class
+  - Now that state can be accessed with `props`
