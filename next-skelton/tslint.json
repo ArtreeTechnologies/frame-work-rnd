@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-eslint-rules"
+  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "import-name": false,
+    "function-name": [
+      true,
+      {
+        "function-regex": "^[a-zA-Z$][\\w\\d]+$",
+        "method-regex": "^[a-z$][\\w\\d]+$",
+        "private-method-regex": "^[a-z$][\\w\\d]+$",
+        "protected-method-regex": "^[a-z$][\\w\\d]+$",
+        "static-method-regex": "^[a-z$][\\w\\d]+$"
+      }
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "prettier": [
+      true,
+      {
+        "bracketSpacing": true,
+        "printWidth": 80,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ],
+    "variable-name": {
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    }
+  }
+}
