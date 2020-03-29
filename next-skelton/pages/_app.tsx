@@ -1,4 +1,5 @@
 import App from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import {
   ThemeProvider as MaterialThemeProvider,
@@ -19,13 +20,18 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <StylesProvider injectFirst>
-        <MaterialThemeProvider theme={theme}>
-          <StyledThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </StyledThemeProvider>
-        </MaterialThemeProvider>
-      </StylesProvider>
+      <React.Fragment>
+        <Head>
+          <title>Artree</title>
+        </Head>
+        <StylesProvider injectFirst>
+          <MaterialThemeProvider theme={theme}>
+            <StyledThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </StyledThemeProvider>
+          </MaterialThemeProvider>
+        </StylesProvider>
+      </React.Fragment>
     );
   }
 }

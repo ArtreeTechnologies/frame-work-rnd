@@ -36,7 +36,6 @@ yarn lint-check
 yarn test
 ```
 
-
 # Getting Started Next Project
 ## Install Necessary Modules
 ```
@@ -395,8 +394,8 @@ yarn add -D babel-plugin-module-resolver
 },
 ```
 
-## `Material UI Settings`
-### Instal Material UI
+## `Material UI` Settings
+### Instal Modules
 1. Command:
 ```
 yarn add @material-ui/core @material-ui/icons
@@ -409,6 +408,7 @@ yarn add @material-ui/core @material-ui/icons
 yarn add styled-components
 yarn add -D @types/styled-components
 ```
+### Setup `_document.tsx` and `_app.tsx`
 3. `/pages/_document.tsx`
 * Reference(
   - https://github.com/zeit/next.js/blob/canary/examples/with-styled-components/pages/_document.js
@@ -451,3 +451,11 @@ const theme = createMuiTheme({
   - Inject both `ThemeProvider` to wrap descendant Components
   - Theme is imported from `page-content.ts` file to be set in `ThemeProvider`
   - When component mounted, `#jss-server-side` should be removed from `document`
+
+## `Redux` Settings
+### Install Modules
+- `redux`... For managing application state
+- `react-redux`... Make React bindings for Redux
+- `next-redux-wrapper`... wWrapper Redux for Next.js
+- `redux-devtools-extension`... For debugging application’s state changes.(https://github.com/zalmoxisus/redux-devtools-extension — download extension for your browser)
+- `redux-thunk`... Middleware allows you to write action creators that return a function instead of an action.
